@@ -1,10 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../styles/Hero.css";
 import useFetch from "../Hooks/useFetch";
 import FadeLoader from "react-spinners/FadeLoader";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import CartContext from "../Hooks/CartContext";
 
-const Hero = ({cartItem,setCartItem}) => {
+
+const Hero = () => {
+  const {handleAddToCart} = useContext(CartContext)
+  
   const { data: data2, loading: loading2, error:error2,} = useFetch(
     "https://fakestoreapi.com/products/14"
   );
@@ -12,16 +17,10 @@ const Hero = ({cartItem,setCartItem}) => {
     "https://fakestoreapi.com/products/category/men's clothing"
   );
 
-  let handleAddToCart=(product)=>{
-    const productSelected = cartItem.find((singleCartItem)=>singleCartItem.id === product.id)
-    if(productSelected){
-        setCartItem(cartItem.map((oneItem)=> oneItem.id === product.id ? 
-        {...productSelected, quantity:productSelected.quantity + 1} : oneItem
-        ))
-    }else{
-        setCartItem([...cartItem,{...product,quantity:1}])
-    }
-  }
+  const notify = () => {toast.success('An item has been added !' ,{
+    position:toast.POSITION.TOP_CENTER,
+  })}
+
 
   return (
     <div className='container hero-container'>
@@ -42,7 +41,9 @@ const Hero = ({cartItem,setCartItem}) => {
                   <img className=' img-fluid w-75' src={image} alt={title} />
                   <p className="fw-bold">${price} </p>
                     </Link>
-                  <button onClick={()=>handleAddToCart(datum3)} className="btn text-white btn-primary">add to cart</button>
+                  <button onClick={()=>{handleAddToCart(datum3); notify()}} className="btn text-white btn-primary">add to cart</button>
+                  <ToastContainer />
+
                 </div>
               )
             })}

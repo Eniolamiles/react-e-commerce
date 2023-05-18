@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {useParams,Link} from 'react-router-dom'
 import useFetch from '../Hooks/useFetch'
 import { FadeLoader } from 'react-spinners'
+import CartContext from '../Hooks/CartContext'
 
 const SingleProduct = () => {
+  const {handleAddToCart} = useContext(CartContext)
     const {id} = useParams() 
     const {data,loading } = useFetch(`https://fakestoreapi.com/products/${id}`)
     const {title, image, description, price, rating} = data
@@ -21,7 +23,7 @@ const SingleProduct = () => {
                 <h4 className='text-success lh-base'> {description} </h4>
                 <h3>${price} </h3>
                 <div className=' d-flex flex-column '>
-                <button className='btn btn-primary my-4' >add to cart</button>
+                <button onClick={()=> handleAddToCart(data)} className='btn btn-primary my-4'>add to cart</button>
             <Link to='/' className='btn btn-primary my-1 '>
                 Back to home
             </Link>
