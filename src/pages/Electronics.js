@@ -1,16 +1,15 @@
 import UseFetch from "../Hooks/useFetch";
-import { ClipLoader } from "react-spinners";
 import { ToastContainer, toast } from "react-toastify";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartContext from "../Hooks/CartContext";
-import "../styles/Jewelry.css";
+import "../styles/Electronics.css";
 
-const Jewelry = () => {
+const Electronics = () => {
   const { cartItem, setCartItem, handleAddToCart } = useContext(CartContext);
 
   const { data, error, loading } = UseFetch(
-    "https://fakestoreapi.com/products/category/jewelery"
+    "https://fakestoreapi.com/products/category/electronics"
   );
 
   const notify = () => {
@@ -20,31 +19,27 @@ const Jewelry = () => {
   };
 
   return (
-    <div className="container jewelry">
-      <h2>{loading && <ClipLoader />}</h2>
-      <div className="component-title-jewelry">
-        <h2>JEWELRY CATEGORY</h2>
+    <div className="container elelctronics">
+      <div className="component-title-electronics">
+        <h2>ELECTRONIC CATEGORY</h2>
       </div>
-      <div className="jewelry-container">
-        {data.map((datumJewelry) => {
-          const { id, image, price, title } = datumJewelry;
+      <div className="electronics-container">
+        {data.map((datumElectronics) => {
+          const { id, image, price, title } = datumElectronics;
           return (
-            <div
-              className="h-100 p-1 text-center jewelry-inner shadow-sm rounded border-3 border"
-              key={id}
-            >
+            <div className="h-100 p-1 text-center electronics-inner shadow-sm rounded border-3 border" key={id}>
               <Link
                 className="text-decoration-none"
                 to={`/SingleProduct/${id}`}
               >
-                <div className="jewelry-img">
-                <img className="img-fluid w-50 m-auto mt-3" src={image} alt={title} />
+                <div className="electronics-img">
+                  <img className="img-fluid w-50 m-auto mt-3" src={image} alt={title} />
                 </div>
-                <p className="fw-bold">${price} </p>
+                <p className="fw-bold ">${price}</p>
               </Link>
               <button
                 onClick={() => {
-                  handleAddToCart(datumJewelry);
+                  handleAddToCart(datumElectronics);
                   notify();
                 }}
                 className="btn btn-primary text-white mb-3"
@@ -60,4 +55,4 @@ const Jewelry = () => {
   );
 };
 
-export default Jewelry;
+export default Electronics;

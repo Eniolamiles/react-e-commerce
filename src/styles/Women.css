@@ -1,34 +1,33 @@
-.component-title-jewelry{
+.component-title-women{
     background-color: #94004f;
     color: white;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     height: 5rem;
-    margin-top: 2rem;
+    margin-top: 42rem;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
-
-
-.jewelry-container{
+.women-container{
     display: grid;
     grid-template-columns:  repeat(2,1fr);
     gap: 30px;
     margin-top: 10px;
     height: 30px;
-   
 }
 
-
-.jewelry-img img{
+.women-img img{
     height: 5rem;
 }
 
+
 @media screen and (min-width: 1024px) {
-  .jewelry-img img {
-    height: 15rem;
+    .component-title-women{
+        margin-top: 71rem;
+    }
+    .women-img img{
+        height: 15rem;
+    }
   }
-  }
-  
