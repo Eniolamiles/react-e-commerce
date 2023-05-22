@@ -5,7 +5,7 @@ const Footer = () => {
   const copyRightYear = new Date().getFullYear
   return (
     <div className='footer mt-5 bg-dark text-white'>
-      <div className='container d-flex justify-content-between alighn-items-center p-4'>
+      <div className='container d-lg-flex justify-content-between align-items-center p-4'>
         {dataFooter.map((datumFooter)=>{
           const {id,title,contact,about,careers,blog} = datumFooter
           return(

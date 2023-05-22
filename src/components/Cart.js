@@ -53,7 +53,7 @@ const Cart = () => {
           return (
             <div
               key={id}
-              className="row justify-content-between align-items-center mt-4"
+              className="row justify-content-between align-items-center mt-4 "
             >
               <div className="col-md-5">
                 <img className="w-100" src={image} alt="title" />
@@ -87,7 +87,7 @@ const Cart = () => {
         <div className="text-center"> 
           <button
             onClick={() => setCartItem([])}
-            className="btn btn-primary w-25 bg-danger border -0 my-4"
+            className="btn btn-primary w-50 bg-danger border -0 my-4"
           >
             {cartItem.length === 1 ? "clear item" : "clear All"}
           </button>
