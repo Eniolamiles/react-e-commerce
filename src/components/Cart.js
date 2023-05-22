@@ -46,14 +46,14 @@ const Cart = () => {
           </div>
         )}
       </div>
-      <div>
+      <div className="container">
         {cartItem.map((singleCartItem) => {
           const { image, id, title, price, quantity, description } =
             singleCartItem;
           return (
             <div
               key={id}
-              className="'row justify-content-between align-items-center mt-4"
+              className="row justify-content-between align-items-center mt-4"
             >
               <div className="col-md-5">
                 <img className="w-100" src={image} alt="title" />
@@ -62,7 +62,7 @@ const Cart = () => {
                 <h2 className="text-danger">{title}</h2>
                 <h4 className="text-success lh-base">{description}</h4>
                 <h4>
-                  {quantity} * {price}
+                  {quantity} * ${price}
                 </h4>
                 <div className="d-flex justify-content-between w-75 gap-4">
                   <button
@@ -84,17 +84,19 @@ const Cart = () => {
         })}
       </div>
       {cartItem.length >= 1 && (
-        <button
-          onClick={() => setCartItem([])}
-          className="btn btn-primary w-50 my-4"
-        >
-          {cartItem.length === 1 ? "clear item" : "clear All"}
-        </button>
+        <div className="text-center"> 
+          <button
+            onClick={() => setCartItem([])}
+            className="btn btn-primary w-25 bg-danger border -0 my-4"
+          >
+            {cartItem.length === 1 ? "clear item" : "clear All"}
+          </button>
+        </div>
       )}
       <div className="text-center">
-        <h1>Total Price</h1>
+        <h1 className="fs-4 mt-2">Total Price</h1>
         <div>
-          <h2>{totalPrice}</h2>
+          <h2 className="fs-4 mt-2">${totalPrice}</h2>
         </div>
       </div>
     </div>
