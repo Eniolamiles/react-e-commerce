@@ -27,7 +27,7 @@ const Electronics = () => {
         {data.map((datumElectronics) => {
           const { id, image, price, title } = datumElectronics;
           return (
-            <div className="h-100 p-1 text-center electronics-inner shadow-sm rounded border-3 border" key={id}>
+            <div className="h-100 p-1 text-center shadow-sm rounded border-3 border" key={id}>
               <Link
                 className="text-decoration-none"
                 to={`/SingleProduct/${id}`}

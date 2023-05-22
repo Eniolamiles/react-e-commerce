@@ -27,7 +27,7 @@ const Women = () => {
         {data.map((datumWomen) => {
           const { id, image, price, title } = datumWomen;
           return (
-            <div className="h-100 p-1 text-center women-inner shadow-sm rounded border-3 border" key={id}>
+            <div className="h-100 p-1 text-center shadow-sm rounded border-3 border" key={id}>
               <Link
                 className="text-decoration-none"
                 to={`/SingleProduct/${id}`}
